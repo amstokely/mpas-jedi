@@ -91,6 +91,7 @@ ecbuild_add_library( TARGET ${PROJECT_NAME}
 if(OpenMP_FOUND)
     target_link_libraries( ${PROJECT_NAME} PUBLIC OpenMP::OpenMP_Fortran OpenMP::OpenMP_CXX )
 endif()
+target_compile_definitions( ${PROJECT_NAME} PUBLIC USE_MPAS${MPAS_VERSION_MAJOR})
 target_link_libraries( ${PROJECT_NAME} PUBLIC MPI::MPI_Fortran MPI::MPI_CXX )
 target_link_libraries( ${PROJECT_NAME} PUBLIC Boost::boost )
 target_link_libraries( ${PROJECT_NAME} PUBLIC MPAS::core::atmosphere )
