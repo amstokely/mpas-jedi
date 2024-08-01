@@ -196,8 +196,14 @@ subroutine geo_setup(self, f_conf, f_comm)
 #endif
 
    ! Domain decomposition and templates for state/increment variables
+#ifdef USE_MPAS8
    call mpas_init( self % corelist, self % domain, external_comm = self%f_comm%communicator(), &
                  & namelistFileParam = trim(nml_file), streamsFileParam = trim(streams_file))
+#endif
+#ifdef USE_MPAS7
+   call mpas_init( self % corelist, self % domain, mpi_comm = self%f_comm%communicator(), &
+                 & namelistFileParam = trim(nml_file), streamsFileParam = trim(streams_file))
+#endif
 
    ! The interpolation method specified here will be used to interpolate data between
    ! different geometries, but not in GetValues. GetValues has its own configuration
