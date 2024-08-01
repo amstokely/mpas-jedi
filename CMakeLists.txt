@@ -53,7 +53,6 @@ else()
     endif()
     find_package( atlas 0.35.0 REQUIRED )
 endif()
-target_compile_definitions( ${PROJECT_NAME} PUBLIC USE_MPAS${MPAS_VERSION_MAJOR})
 
 # Use external ESMF if found
 if(ESMF_FOUND)
